@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.List;
+
 /**
  * Created by gerson on 01/05/17.
  */
@@ -14,9 +16,9 @@ import android.widget.TextView;
 public class AdaptadorListaSuper extends ArrayAdapter<Renglon> {
 
 
-    private final Renglon[] datos;
+    private final List<Renglon> datos;
 
-    public AdaptadorListaSuper(Context context, Renglon[] datos) {
+    public AdaptadorListaSuper(Context context, List<Renglon> datos) {
         super(context, R.layout.layout_componente_lista, datos);
         this.datos = datos;
     }
@@ -27,11 +29,11 @@ public class AdaptadorListaSuper extends ArrayAdapter<Renglon> {
         View item = inflater.inflate(R.layout.layout_componente_lista, null);
 
         TextView nombreProducto = (TextView) item.findViewById(R.id.nombreProducto);
-        nombreProducto.setText(datos[position].getNombre());
+        nombreProducto.setText(datos.get(position).getNombre());
         TextView precioProducto = (TextView) item.findViewById(R.id.precioProducto);
-        precioProducto.setText(datos[position].getPrecio().toString());
+        precioProducto.setText(datos.get(position).getPrecio().toString());
         TextView fechaUltimaCompra = (TextView) item.findViewById(R.id.fechaCompra);
-        fechaUltimaCompra.setText(datos[position].getFecha().toString());
+        fechaUltimaCompra.setText(datos.get(position).getFecha().toString());
 
         return item;
     }

@@ -7,36 +7,33 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Renglon[] datos = new Renglon[]{
-            new Renglon("Titulo 1", new Date(), new Double(0.0)),
-            new Renglon("Titulo 2", new Date(), new Double(0.0)),
-            new Renglon("Titulo 3", new Date(), new Double(0.0)),
-            new Renglon("Titulo 4", new Date(), new Double(0.0))};
 
+    private List<Renglon> datos = new ArrayList<Renglon>();
+    private AdaptadorListaSuper adaptador;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_nuevo:
+                datos.add(new Renglon("", "", ""));
+                adaptador.notifyDataSetChanged();
                 Log.i("ActionBar", "Nuevo!");
                 return true;
             case R.id.action_settings:
                 Log.i("ActionBar", "Settings!");
-                ;
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
@@ -47,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AdaptadorListaSuper adaptador = new AdaptadorListaSuper(this, datos);
-
+        datos.add(new Renglon("", "", ""));
+        this.adaptador = new AdaptadorListaSuper(this, datos);
         ListView lstItems = (ListView) findViewById(R.id.itemsLst);
         lstItems.setAdapter(adaptador);
 

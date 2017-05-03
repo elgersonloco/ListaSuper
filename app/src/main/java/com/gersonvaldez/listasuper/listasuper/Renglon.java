@@ -1,7 +1,5 @@
 package com.gersonvaldez.listasuper.listasuper;
 
-import java.util.Date;
-
 /**
  * Created by gerson on 01/05/17.
  */
@@ -9,13 +7,16 @@ import java.util.Date;
 public class Renglon {
 
     String nombre;
-    Date fecha;
-    Double precio;
+    String fecha;
+    String precio;
 
-    public Renglon(String nombre, Date fecha, Double precio) {
+    public Renglon(String nombre, String precio, String fecha) {
+
+
         this.nombre = nombre;
         this.fecha = fecha;
         this.precio = precio;
+
     }
 
     public String getNombre() {
@@ -26,19 +27,19 @@ public class Renglon {
         this.nombre = nombre;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public Double getPrecio() {
+    public String getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Double precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
 }
