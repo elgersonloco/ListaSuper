@@ -47,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         datos.add(new Renglon("", "", ""));
         this.adaptador = new AdaptadorListaSuper(this, datos);
         ListView lstItems = (ListView) findViewById(R.id.itemsLst);
+        lstItems.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this, lstItems));
+
+
+
         lstItems.setAdapter(adaptador);
 
 
